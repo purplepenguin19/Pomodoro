@@ -1,0 +1,221 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #59467c;
+  --surface: #16213e;
+  --accent: #e94560;
+  --accent-soft: #533483;
+  --text: #eaeaea;
+  --text-muted: #a0a0b0;
+  --work-color: #e94560;
+  --break-color: #0f9b8e;
+  --radius: 12px;
+}
+
+body {
+  font-family: "Georgia", system-ui, -apple-system, serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.app {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.setting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.setting label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.setting input {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: border-color 0.2s;
+}
+
+.setting input:focus {
+  outline: none;
+  border-color: var(--accent-soft);
+}
+
+.setting input.invalid {
+  border-color: var(--accent);
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.timer-display {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.mode-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  background: rgba(233, 69, 96, 0.15);
+  color: var(--work-color);
+}
+
+.mode-label.break {
+  background: rgba(15, 155, 142, 0.15);
+  color: var(--break-color);
+}
+
+.time {
+  font-size: 4rem;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.progress-ring {
+  display: flex;
+  justify-content: center;
+}
+
+.progress-ring svg {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.progress-bg {
+  fill: none;
+  stroke: var(--bg);
+  stroke-width: 6;
+}
+
+.progress-fill {
+  fill: none;
+  stroke: var(--work-color);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 0;
+  transition: stroke 0.4s, stroke-dashoffset 0.5s linear;
+}
+
+.progress-fill.break {
+  stroke: var(--break-color);
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  padding: 0.65rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  flex: 1;
+}
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.session-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.session-count span {
+  color: var(--text);
+  font-weight: 700;
+}
+
+@media (max-width: 380px) {
+  .settings {
+    grid-template-columns: 1fr;
+  }
+
+  .time {
+    font-size: 3rem;
+  }
+}

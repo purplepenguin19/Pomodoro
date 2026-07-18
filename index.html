@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Pomodoro Timer</h1>
+      <p class="subtitle">Stay focused, take breaks</p>
+    </header>
+
+    <section class="settings" aria-label="Timer settings">
+      <div class="setting">
+        <label for="work-input">Work Timer (minutes)</label>
+        <input
+          type="number"
+          id="work-input"
+          min="20"
+          max="120"
+          value="25"
+          step="1"
+        >
+        <span class="hint">20 – 120 minutes</span>
+      </div>
+
+      <div class="setting">
+        <label for="break-input">Break Timer (minutes)</label>
+        <input
+          type="number"
+          id="break-input"
+          min="1"
+          max="60"
+          value="5"
+          step="1"
+        >
+        <span class="hint" id="break-hint">Max half of work time</span>
+      </div>
+    </section>
+
+    <section class="timer-display" aria-live="polite">
+      <span class="mode-label" id="mode-label">Work</span>
+      <div class="time" id="time-display">25:00</div>
+      <div class="progress-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="progress-bg" cx="60" cy="60" r="54"></circle>
+          <circle class="progress-fill" id="progress-circle" cx="60" cy="60" r="54"></circle>
+        </svg>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button type="button" id="start-btn" class="btn btn-primary">Start</button>
+      <button type="button" id="pause-btn" class="btn btn-secondary" disabled>Pause</button>
+      <button type="button" id="reset-btn" class="btn btn-secondary">Reset</button>
+    </section>
+
+    <p class="session-count">Sessions completed: <span id="session-count">0</span></p>
+  </main>
+
+  <script src="timer.js"></script>
+</body>
+</html>
